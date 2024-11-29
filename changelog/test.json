@@ -1,0 +1,14 @@
+{
+    "title": "Mise à jour critique",
+    "description": "Correction d'une faille de sécurité critique.",
+    "environments": ["prod"],
+    "impact": ["auth-service"],
+    "contacts": ["John Doe (john.doe@example.com)"],
+    "schedule": {
+      "start": "2024-11-29T10:00:00Z",
+      "end": "2024-11-29T12:00:00Z"
+    },
+    "recommendations": "Surveiller les services et appliquer un rollback si nécessaire.",
+    "notify": ["SECURITY"]
+  }
+  

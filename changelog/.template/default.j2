@@ -3,16 +3,16 @@
   "attachments": [
     {
       "contentType": "application/vnd.microsoft.card.adaptive",
-      "contentUrl": null,
       "content": {
-            "type": "AdaptiveCard",
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "version": "1.4",
+        "type": "AdaptiveCard",
         "body": [
           {
             "type": "TextBlock",
-            "size": "medium",
-            "weight": "bolder",
             "text": "{{ title }}",
-            "style": "heading"
+            "weight": "Bolder",
+            "size": "Medium"
           },
           {
             "type": "TextBlock",
@@ -24,21 +24,12 @@
             "facts": [
               {
                 "title": "Environnements:",
-                "value": "{{ envs|join(', ') }}"
+                "value": "{{ envs | join(', ') }}"
               },
               {
-                "title": "Services impactés:",
-                "value": "{{ impact|join(', ') }}"
+                "title": "Impact:",
+                "value": "{{ impact | join(', ') }}"
               },
-              {
-                "title": "Recommendations:",
-                "value": "{{ recommendations }}"
-              }
-            ]
-          },
-          {
-            "type": "FactSet",
-            "facts": [
               {
                 "title": "Début:",
                 "value": "{{ schedule.start }}"
@@ -46,17 +37,32 @@
               {
                 "title": "Fin:",
                 "value": "{{ schedule.end }}"
+              },
+              {
+                "title": "Recommandations:",
+                "value": "{{ recommendations }}"
               }
             ]
           },
           {
             "type": "TextBlock",
-            "text": "**Contacts**: \n\n - {{ contacts|join(' \\n\\n - ') }}",
+            "text": "Contacts:",
+            "weight": "Bolder",
+            "spacing": "Medium"
+          },
+          {
+            "type": "TextBlock",
+            "text": "{% for contact in contacts %}{{ contact }}{% if not loop.last %}, {% endif %}{% endfor %}",
             "wrap": true
           }
         ],
-        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-        "version": "1.5"
+        "actions": [
+          {
+            "type": "Action.OpenUrl",
+            "title": "Voir plus de détails",
+            "url": "https://example.com/details"
+          }
+        ]
       }
     }
   ]
