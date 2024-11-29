@@ -2,8 +2,8 @@ on:
     push:
       branches:
         - main
-  name: changelog
-  jobs:
+name: changelog
+jobs:
     get_changelogs:
       name: Get Added Changelog
       runs-on: ubuntu-latest
